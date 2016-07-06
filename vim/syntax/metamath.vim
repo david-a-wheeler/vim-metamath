@@ -169,27 +169,33 @@ syn match metamathLabel "\<[A-Za-z0-9_.-]\+\>"
 " Trailing space is bad for version control - warn about it.
 syn match metamathTrailingSpace "[ \t]\+$"
 
-" Technically metamath doesn't "know" about specific constants.
-" However, typical metamath files define some specific constants as operators,
-" and they are unlikely to have unexpected meanings,
-" so let's recognize them.
-" TODO: Make this matching optional.
-
-syn match metamathNumber contained '\<\d\+\>'
-syn keyword metamathBoolean contained T.
-syn keyword metamathBoolean contained F.
-syn keyword metamathBasicOperator contained ->
-syn keyword metamathBasicOperator contained <->
-syn keyword metamathBasicOperator contained -.
-syn keyword metamathBasicOperator contained (
-syn keyword metamathBasicOperator contained )
-syn keyword metamathBasicOperator contained \|-
-syn keyword metamathBasicOperator contained \\/
-syn keyword metamathBasicOperator contained /\
-syn keyword metamathBasicOperator contained A.
-syn keyword metamathBasicOperator contained E.
-syn keyword metamathBasicOperator contained e.
-syn keyword metamathBasicOperator contained =
+" Technically metamath doesn't "know" about specific constants in
+" math expressions.  Even parentheses must be defined.
+" However, typical metamath files define some specific common constructs
+" constants as numbers, parentheses, turnstile,
+" fundamental logical operators, and so on.
+" They are unlikely to have unexpected meanings.
+" So let's recognize them, emphasizing those very low-level constructs.
+" This provides some contrast with other parts of an expression,
+" and the visual contrast can help the eye notice a defect.
+" If you don't want to recognize these, set "metamath_omit_common".
+if !exists("g:metamath_omit_common")
+  syn match metamathNumber contained '\<\d\+\>'
+  syn keyword metamathBoolean contained T.
+  syn keyword metamathBoolean contained F.
+  syn keyword metamathBasicOperator contained \|-
+  syn keyword metamathBasicOperator contained ->
+  syn keyword metamathBasicOperator contained <->
+  syn keyword metamathBasicOperator contained -.
+  syn keyword metamathBasicOperator contained (
+  syn keyword metamathBasicOperator contained )
+  syn keyword metamathBasicOperator contained \\/
+  syn keyword metamathBasicOperator contained /\
+  syn keyword metamathBasicOperator contained A.
+  syn keyword metamathBasicOperator contained E.
+  syn keyword metamathBasicOperator contained e.
+  syn keyword metamathBasicOperator contained =
+endif
 
 syn cluster metamathExpression
     \ contains=metamathNumber,metamathBoolean,metamathBasicOperator,metamathTrailingSpace
