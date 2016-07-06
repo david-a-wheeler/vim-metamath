@@ -16,23 +16,19 @@ syn sync match metamathSyncComment grouphere NONE " $)"
 " Identifiers can contain "." and "$"; parentheses are valid constants.
 setlocal iskeyword=33-255
 
-" Some text within a comment is special; this cluster lists them.
-syn cluster metamathSpecialComment
-    \ contains=metamathXref,metamathEmbeddedExpression,metamathDate,metamathTodo,metamathDiscouraged,metamathBibReference
+" Handle special constructs within a comment.
 
 " A cross-reference in a comment; begins with "~".
-syn region metamathXref
-    \ start=" \~ "hs=s+1
-    \ end="\( \|$\)"he=e-1
-    \ contained
+syn region metamathXref contained
+    \ start="\<\~ \+"
+    \ end="\>"
 
 " An expression in a comment; enclosed by `...`.
-syn region metamathEmbeddedExpression
+syn region metamathEmbeddedExpression contained
     \ start="`"
     \ end="`\( \|$\)"he=e-1
     \ contains=@metamathExpression
     \ skip="``"
-    \ contained
 
 " An date in a comment; these are common enough to visually distinguish.
 syn match metamathDate contained
@@ -40,7 +36,7 @@ syn match metamathDate contained
 
 syn keyword metamathTodo contained TODO FIXME Todo
 
-syn match metamathDiscouraged
+syn match metamathDiscouraged contained
     \ "\((Proof modification is discouraged.)\|(New usage is discouraged.)\)"
 
 " External bibliography reference.  See "help write bibliography"
@@ -67,11 +63,20 @@ syn match metamathDiscouraged
 "  mmset.html) in the database $t comment, in the form <A NAME="<author>"></A>
 "  e.g. <A NAME="Monk"></A>. The <nnn> may be any alphanumeric string such as
 "  an integer or Roman numeral.
-syn match metamathBibReference
-  \ "\(Axiom\|Chapter\|Compare\|Condition\|\|Corollary\|Definition\|Equation\|Example\|Exercise\|Figure\|Item\|Lemmas\?\|Lines\?\|Notation\|Part\|Postulate\|Problem\|Property\|Proposition\|Remark\|Rule\|Scheme\|Section\|Theorem\)[ \t\n\r]\+\([^\t\n\r]\{1,10\}[ \t\n\r]\)\?\(\(from\|in\|of\|on\)[ \t\n\r]\+\)\?\[[^ \t\n\r\[\]]*\][ \t\n\r]\+p\.[ \t\n\r]\+[^ \t\n\r]\+"
+syn match metamathBibReference contained
+  \ "\(Axiom\|Chapter\|Compare\|Condition\|\|Corollary\|Definition\|Equation\|Example\|Exercise\|Figure\|Item\|Lemmas\?\|Lines\?\|Notation\|Part\|Postulate\|Problem\|Property\|Proposition\|Remark\|Rule\|Scheme\|Section\|Theorem\)[ \t\n\r]\+\([^\t\n\r]\{1,10\}[ \t\n\r]\+\)\?\(\(from\|in\|of\|on\)[ \t\n\r]\+\)\?\[[^ \t\n\r\[\]]*\][ \t\n\r]\+p\.[ \t\n\r]\+[^ \t\n\r]\+"
+
+" Some text within a comment is special; this cluster lists them.
+syn cluster metamathSpecialComment
+    \ contains=metamathXref,metamathEmbeddedExpression,metamathDate,metamathTodo,metamathDiscouraged,metamathBibReference
 
 
 " metamathComments do NOT nest, so we use keepend.
+" Could be a stickler for the
+" legal characters: A-Z, a-z, 0-9, and:
+" ` ~ ! @ # $ % ^ & * ( ) - _ = +
+" [ ] { } ; : ' " , . < > / ? \ |
+
 syn region metamathComment
     \ start="$("hs=s+1
     \ end="$)"he=e-1
@@ -131,6 +136,8 @@ syn region metamathInclude
        \ start="$\[ "hs=s+3
        \ end=" $\]"he=e-3
 
+syn match metamathLabel "[A-Za-z0-9_.-]\+"
+
 " Trailing space is bad for version control - warn about it.
 syn match metamathTrailingspace "[ \t]*$"
 
@@ -142,7 +149,7 @@ syn match metamathTrailingspace "[ \t]*$"
 syn cluster metamathExpression
     \ contains=metamathNumber,metamathBoolean,metamathBasicOperator
 
-syn match metamathNumber contained ' \d\+ '
+syn match metamathNumber contained '\<\d\+\>'
 syn keyword metamathBoolean contained T.
 syn keyword metamathBoolean contained F.
 syn keyword metamathBasicOperator contained ->
@@ -151,7 +158,7 @@ syn keyword metamathBasicOperator contained -.
 syn keyword metamathBasicOperator contained (
 syn keyword metamathBasicOperator contained )
 syn keyword metamathBasicOperator contained \|-
-syn keyword metamathBasicOperator contained \/
+syn keyword metamathBasicOperator contained \\/
 syn keyword metamathBasicOperator contained /\
 syn keyword metamathBasicOperator contained A.
 syn keyword metamathBasicOperator contained E.
@@ -168,7 +175,7 @@ highlight def link metamathComment     Comment
 highlight def link metamathXref        Underlined
 highlight def link metamathDate        SpecialComment
 highlight def link metamathDiscouraged SpecialComment
-highlight def link metamathEmbeddedExpression SpecialComment
+highlight def link metamathEmbeddedExpression Structure
 highlight def link metamathBibReference SpecialComment
 highlight def link metamathTodo        Todo
 
@@ -182,6 +189,7 @@ highlight def link metamathTheorem     Structure
 highlight def link metamathProof       Define
 highlight def link metamathInclude     Include
 highlight def link metamathTrailingspace Error
+highlight def link metamathLabel       Identifier
 
 highlight def link metamathBoolean     Boolean
 highlight def link metamathNumber      Number
