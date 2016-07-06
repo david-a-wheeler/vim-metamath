@@ -3,10 +3,10 @@
 This is vim-metamath, a vim mode for editing [metamath](http://metamath.org/)
 files by David A. Wheeler.
 
-This is has the same goals, but is otherwise unrelated to the
+This mode has the same goals, but is otherwise unrelated
+and much more ambitious, than
 [marnix/metamath.vim mode](https://github.com/marnix/metamath.vim).
-This mode is much more ambitious and handles much more.
-In particular, it highlights different kinds of comments.
+It handles much more, e,g., it specially highlights different kinds of comments.
 
 # INSTALLATION
 
