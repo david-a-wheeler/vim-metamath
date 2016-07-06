@@ -1,5 +1,5 @@
-
 VIMDIR=$(HOME)/.vim/
+VIMDIR_WINDOWS=$(HOMEPATH)\vimfiles
 CP=cp
 CP_OPTIONS=-pr
 
@@ -8,6 +8,10 @@ DESTDIR=
 install:
 	mkdir -p "$(VIMDIR)"
 	$(CP) $(CP_OPTIONS) vim/* "$(DESTDIR)$(VIMDIR)"
+
+# This installs in the *Windows* area when running on Cygwin.
+install_windows:
+	$(MAKE) VIMDIR=$(VIMDIR_WINDOWS)
 
 uninstall:
 	rm -f "$(DESTDIR)$(VIMDIR)"/ftdetect/metamath.vim 
