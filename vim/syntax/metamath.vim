@@ -16,6 +16,9 @@ syn sync match metamathSyncComment grouphere NONE " $)"
 " Identifiers can contain "." and "$"; parentheses are valid constants.
 setlocal iskeyword=33-255
 
+" Highlight $.. commands that don't match anything else.
+syn match metamathBadStatement "$[^ {}]"
+
 " Handle special constructs within a comment.
 
 " A cross-reference in a comment; begins with "~".
@@ -80,7 +83,7 @@ syn cluster metamathSpecialComment
 syn region metamathComment
     \ start="$("hs=s+1
     \ end="$)"he=e-1
-    \ contains=@metamathSpecialComment,@Spell
+    \ contains=metamathTrailingSpace,@metamathSpecialComment,@Spell
     \ conceal keepend
 
 " $c ... $. - Constant declaration
@@ -98,20 +101,23 @@ syn region metamathDisjoint
     \ start="$d "hs=s+3
     \ end=" $\."he=e-3
 
+" The following constructs require labels, so require that the label
+" be processed first.
+
 " <label> $f ... $. - "Floating" hypothesis (i.e. variable type declaration)
-syn region metamathFloating
+syn region metamathFloating contained
     \ start="$f "hs=s+3
     \ end=" $\."he=e-3
 
 " <label> $e ... $. - "Essential" hypothesis (i.e. a logical assumption for a
 "                     theorem or axiom)
-syn region metamathEssential
+syn region metamathEssential contained
        \ start="$e "hs=s+3
        \ end=" $\."he=e-3
        \ contains=@metamathExpression
 
 " <label> $a ... $. - Axiom or definition or syntax construction
-syn region metamathAxiom
+syn region metamathAxiom contained
        \ start="$a "hs=s+3
        \ end=" $\."he=e-3
        \ contains=@metamathExpression
@@ -119,35 +125,47 @@ syn region metamathAxiom
 " <label> $p ... $= ... $. - Theorem and its proof.
 " This handles the first part before "$="; on "$=" we start "metamathProof",
 " which looks different. The "keepend" is needed to end with metamathProof.
-syn region metamathTheorem
+syn region metamathTheorem contained
        \ start="$p "hs=s+3
        \ end="$\."he=e-2
        \ contains=metamathProof,@metamathExpression
        \ keepend
 
 " This is the proof part of a theorem.
-syn region metamathProof
+syn region metamathProof contained
        \ start=" $="hs=s+3
        \ end="$\."
-       \ contained
+       \ contains=metamathTrailingSpace
 
 " $[ ... $] - Include a file
 syn region metamathInclude
        \ start="$\[ "hs=s+3
        \ end=" $\]"he=e-3
 
-syn match metamathLabel "[A-Za-z0-9_.-]\+"
+" ${ ... $} - Block
+syn region metamathBlock
+       \ start="${"
+       \ end="$}"
+       \ contains=TOP
+       \ transparent
+
+" Highlight lables, and then handle labelled constructs (but only when
+" the required label is there).
+syn cluster metamathLabelled
+    \ contains=metamathFloating,metamathEssential,metamathAxiom,metamathTheorem,metamathProof
+
+syn match metamathLabel "\<[A-Za-z0-9_.-]\+\>"
+    \ nextgroup=@metamathLabelled
+    \ skipwhite skipempty
 
 " Trailing space is bad for version control - warn about it.
-syn match metamathTrailingspace "[ \t]*$"
+syn match metamathTrailingSpace "[ \t]\+$"
 
 " Technically metamath doesn't "know" about specific constants.
 " However, typical metamath files define some specific constants as operators,
 " and they are unlikely to have unexpected meanings,
 " so let's recognize them.
 " TODO: Make this matching optional.
-syn cluster metamathExpression
-    \ contains=metamathNumber,metamathBoolean,metamathBasicOperator
 
 syn match metamathNumber contained '\<\d\+\>'
 syn keyword metamathBoolean contained T.
@@ -165,17 +183,20 @@ syn keyword metamathBasicOperator contained E.
 syn keyword metamathBasicOperator contained e.
 syn keyword metamathBasicOperator contained =
 
+syn cluster metamathExpression
+    \ contains=metamathNumber,metamathBoolean,metamathBasicOperator,metamathTrailingSpace
 
 let b:current_syntax = "metamath"
 
 " Define highlighting.  The "standard" names don't map well
 " to metamath constructs; this mapping probably needs work.
 " For list see http://vimdoc.sourceforge.net/htmldoc/syntax.html#:highlight
+highlight def link metamathBadStatement Error
 highlight def link metamathComment     Comment
 highlight def link metamathXref        Underlined
 highlight def link metamathDate        SpecialComment
 highlight def link metamathDiscouraged SpecialComment
-highlight def link metamathEmbeddedExpression Structure
+highlight def link metamathEmbeddedExpression Structure " = metamathTheorem
 highlight def link metamathBibReference SpecialComment
 highlight def link metamathTodo        Todo
 
@@ -188,8 +209,8 @@ highlight def link metamathAxiom       Statement
 highlight def link metamathTheorem     Structure
 highlight def link metamathProof       Define
 highlight def link metamathInclude     Include
-highlight def link metamathTrailingspace Error
-highlight def link metamathLabel       Identifier
+highlight def link metamathTrailingSpace Error
+highlight def link metamathLabel       Label
 
 highlight def link metamathBoolean     Boolean
 highlight def link metamathNumber      Number
