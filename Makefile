@@ -3,14 +3,21 @@ VIMDIR=$(HOME)/.vim/
 CP=cp
 CP_OPTIONS=-pr
 
+DESTDIR=
+
 install:
 	mkdir -p "$(VIMDIR)"
-	$(CP) $(CP_OPTIONS) vim/* "$(VIMDIR)"
+	$(CP) $(CP_OPTIONS) vim/* "$(DESTDIR)$(VIMDIR)"
+
+uninstall:
+	rm -f "$(DESTDIR)$(VIMDIR)"/ftdetect/metamath.vim 
+	rm -f "$(DESTDIR)$(VIMDIR)"/syntax/metamath.vim 
 
 # Install symbolic links to the files instead.
 install_symlinks:
-	mkdir -p "$(VIMDIR)"
-	mkdir -p "$(VIMDIR)/ftdetect"
-	mkdir -p "$(VIMDIR)/syntax"
-	ln -s vim/ftdetect/metamath.vim "$(VIMDIR)"/ftdetect/metamath.vim 
-	ln -s vim/syntax/metamath.vim "$(VIMDIR)"/syntax/metamath.vim 
+	mkdir -p "$(DESTDIR)$(VIMDIR)/ftdetect"
+	mkdir -p "$(DESTDIR)$(VIMDIR)/syntax"
+	ln -s "$(PWD)"/vim/ftdetect/metamath.vim \
+	      "$(DESTDIR)$(VIMDIR)"/ftdetect/metamath.vim 
+	ln -s "$(PWD)"/vim/syntax/metamath.vim \
+	      "$(DESTDIR)$(VIMDIR)"/syntax/metamath.vim 
