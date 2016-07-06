@@ -22,7 +22,7 @@ syn cluster metamathSpecialComment
 
 " A cross-reference in a comment; begins with "~".
 syn region metamathXref
-    \ start="\(^\| \)\@=\~\( \|$\)"
+    \ start=" \~ "hs=s+3
     \ end="\( \|$\)"he=e-1
     \ contained
 
