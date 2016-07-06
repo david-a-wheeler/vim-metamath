@@ -69,9 +69,17 @@ syn match metamathDiscouraged contained
 syn match metamathBibReference contained
   \ "\(Axiom\|Chapter\|Compare\|Condition\|\|Corollary\|Definition\|Equation\|Example\|Exercise\|Figure\|Item\|Lemmas\?\|Lines\?\|Notation\|Part\|Postulate\|Problem\|Property\|Proposition\|Remark\|Rule\|Scheme\|Section\|Theorem\)[ \t\n\r]\+\([^\t\n\r]\{1,10\}[ \t\n\r]\+\)\?\(\(from\|in\|of\|on\)[ \t\n\r]\+\)\?\[[^ \t\n\r\[\]]*\][ \t\n\r]\+p\.[ \t\n\r]\+[^ \t\n\r]\+"
 
+syn match metamathURL contained
+    \ "\<https\?://[^ \t]\+\>"
+
+" Specially match long-standing bugs in the introductory set.mm comments
+" (they're not as critical because it's never rendered).
+syn match metamathSetMMBug contained
+    \ "\(changed \"D e\. Met\" to \"D e\. ( Met ` X )\",\|tokens be enclosed in grave accents (` `)\.  This way\|is interpreted as a single ` \.  A special\|\"`' R\" should be read \"converse of (relation) R\"\|\"( f ` x )\" should be read \"the value of function f at x\"\)"
+
 " Some text within a comment is special; this cluster lists them.
 syn cluster metamathSpecialComment
-    \ contains=metamathXref,metamathEmbeddedExpression,metamathDate,metamathTodo,metamathDiscouraged,metamathBibReference
+    \ contains=metamathXref,metamathEmbeddedExpression,metamathDate,metamathTodo,metamathDiscouraged,metamathBibReference,metamathURL,metamathSetMMBug
 
 
 " metamathComments do NOT nest, so we use keepend.
@@ -194,10 +202,12 @@ let b:current_syntax = "metamath"
 highlight def link metamathBadStatement Error
 highlight def link metamathComment     Comment
 highlight def link metamathXref        Underlined
+highlight def link metamathURL         Underlined
 highlight def link metamathDate        SpecialComment
 highlight def link metamathDiscouraged SpecialComment
 highlight def link metamathEmbeddedExpression Structure " = metamathTheorem
 highlight def link metamathBibReference SpecialComment
+highlight def link metamathSetMMBug    Error
 highlight def link metamathTodo        Todo
 
 highlight def link metamathConstant    Constant
