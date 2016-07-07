@@ -75,7 +75,7 @@ syn match metamathURL contained
 " Specially match long-standing bugs in the introductory set.mm comments
 " (they're not as critical because it's never rendered).
 syn match metamathSetMMBug contained
-    \ "\(changed \"D e\. Met\" to \"D e\. ( Met ` X )\",\|tokens be enclosed in grave accents (` `)\.  This way\|is interpreted as a single ` \.  A special\|\"`' R\" should be read \"converse of (relation) R\"\|\"( f ` x )\" should be read \"the value of function f at x\"\)"
+    \ "\(changed \"D e\. Met\" to \"D e\. ( Met ` X )\",\|revised ( ( fLim ` J ) ` F ) -> ( J fLim F )\|is interpreted as a single ` \.  A special\|\"( f ` x )\" should be read \"the value of function f at x\"\)"
 
 " Some text within a comment is special; this cluster lists them.
 syn cluster metamathSpecialComment
