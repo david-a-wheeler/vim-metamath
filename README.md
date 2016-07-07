@@ -15,16 +15,21 @@ It handles much more, e,g., it specially highlights different kinds of comments.
 If you're running Unix/Linux (including MacOS) and have "make",
 just run "make install" to install it.
 
-This doesn't do any serious magic, it just copies the files in the
-vim/ directory into your local vim files directory
-(it will create your local vim files directory if you don't have one).
+RUnning "make install" doesn't do any serious magic;
+it just copies the files in the vim/ directory
+into your local vim files directory.
 On Unix/Linux systems (including MacOS) the local vim files directory
 is "${HOME}/.vim", while on Windows it is "%userprofile%\vimfiles".
+Running make will create your local vim files directory
+and any necessary subdirectories if they don't already exist.
+
+If you can't run make, feel free to directly create the necessary directories
+and copy the files directly.
 
 Advanced users can add parameters to make.
 Just set VIMDIR to the vim files directory to install to, and/or
 CP\_OPTIONS to set additional options to "cp" when copying.
-The Makefile does respect the DESTDIR convention, and it also
+The Makefile respects the DESTDIR convention, and it also
 supports "make uninstall".  Here's an example:
 
 > make VIMDIR="${HOME}/.vim-alt".
