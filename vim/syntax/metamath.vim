@@ -28,7 +28,7 @@ syn region metamathXref contained
 
 " An expression in a comment; enclosed by `...`.
 syn region metamathEmbeddedExpression contained
-    \ start="`"
+    \ start="\<`\>"
     \ end="`\( \|$\)"he=e-1
     \ contains=@metamathExpression
     \ skip="``"
