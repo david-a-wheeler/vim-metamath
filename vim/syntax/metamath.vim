@@ -77,17 +77,19 @@ syn match metamathURL contained
 syn match metamathSetMMBug contained
     \ "\(changed \"D e\. Met\" to \"D e\. ( Met ` X )\",\|revised ( ( fLim ` J ) ` F ) -> ( J fLim F )\|is interpreted as a single ` \.  A special\|\"( f ` x )\" should be read \"the value of function f at x\"\)"
 
+" Highlight characters other than the officially
+" legal characters (per spec), which are A-Z, a-z, 0-9, and:
+" ` ~ ! @ # $ % ^ & * ( ) - _ = +
+" [ ] { } ; : ' " , . < > / ? \ |
+syn match metamathIllegalChar contained
+  \ "[^A-Za-z0-9`~!@#$%^&*()_=+\[\]{};:'\",.<>/?\\| \t\n\r\f-]"
+
 " Some text within a comment is special; this cluster lists them.
 syn cluster metamathSpecialComment
-    \ contains=metamathXref,metamathEmbeddedExpression,metamathDate,metamathTodo,metamathDiscouraged,metamathBibReference,metamathURL,metamathSetMMBug
+    \ contains=metamathXref,metamathEmbeddedExpression,metamathDate,metamathTodo,metamathDiscouraged,metamathBibReference,metamathURL,metamathSetMMBug,metamathIllegalChar
 
 
 " metamathComments do NOT nest, so we use keepend.
-" Could be a stickler for the
-" legal characters: A-Z, a-z, 0-9, and:
-" ` ~ ! @ # $ % ^ & * ( ) - _ = +
-" [ ] { } ; : ' " , . < > / ? \ |
-
 syn region metamathComment
     \ start="$("hs=s+1
     \ end="$)"he=e-1
@@ -214,6 +216,7 @@ highlight def link metamathDiscouraged SpecialComment
 highlight def link metamathEmbeddedExpression Structure " = metamathTheorem
 highlight def link metamathBibReference SpecialComment
 highlight def link metamathSetMMBug    Error
+highlight def link metamathIllegalChar Error
 highlight def link metamathTodo        Todo
 
 highlight def link metamathConstant    Constant
