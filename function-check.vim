@@ -9,16 +9,32 @@ edit test.mm
 
 echom "Starting test"
 
-" cursor takes line, column
-let junk = cursor(1, 4)
-if synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") != 'Comment'
-  throw 'Test failure: Comment'
-endif
+function SpecificSyntaxName()
+  return synIDattr(synID(line("."),col("."),1),"name")
+endfunction
 
-let junk = cursor(11, 4)
-if synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") != 'Statement'
-  throw 'Test failure: Statement'
-endif
+function MappedSyntaxName()
+  return synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
+endfunction
+
+function MyMoveTo(line,column)
+  let junk = cursor(a:line, a:column)
+endfunction
+
+function! RunATest(actual, expected, testid) abort
+  if a:actual != a:expected
+    echom 'Test failure: ' . a:testid
+    cq
+  endif
+endfunction
+
+
+call MyMoveTo(1,4)
+call RunATest(SpecificSyntaxName(), 'metamathComment', 'Comment1')
+call RunATest(MappedSyntaxName(), 'Comment', 'Comment2')
+
+call MyMoveTo(11,4)
+call RunATest(MappedSyntaxName(), 'Statement', 'Statement1')
 
 messages
 quit
