@@ -44,3 +44,15 @@ Here's an example of text-based vim (withi :set background=dark):
 Here's an example of GUI-based gvim (withi :setcolor elflord):
 
 ![GVim metamath screenshot](https://github.com/david-a-wheeler/vim-metamath/blob/master/gvim-metamath-elflord.png)
+
+## Issues and proposals
+
+If you have suggestions specific to this vim mode for metamath, please file an
+[issue](https://github.com/david-a-wheeler/vim-metamath/issues).
+Even better, create a change and file a
+[pull request](https://github.com/david-a-wheeler/vim-metamath/pulls).
+If you want to report a security vulnerability in this package (really?),
+[contact me directly and privately](http://www.dwheeler.com/contactme.html).
+
+If you have general vim or metamath issues, please contact those
+projects instead.
