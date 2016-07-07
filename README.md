@@ -1,8 +1,12 @@
 # vim-metamath
 
-This is vim-metamath, a vim mode for editing [metamath](http://metamath.org/)
-files by David A. Wheeler.  It provides immediate feedback, which
-should help you detect and fix defects before you even save your file.
+This is vim-metamath, a vim mode to help edit
+[metamath](http://metamath.org/) files.
+Metamath is a tiny language that can express theorems in abstract mathematics,
+accompanied by proofs that can be rigorously verified by a computer program.
+This mode provides immediate feedback while you're editing using the
+widely-used vim text editors.
+This mode should help you detect and fix defects before you even save your file.
 It is Free / libre / open source software, released under the MIT license.
 
 This mode has the same goals, but is otherwise unrelated
@@ -10,11 +14,19 @@ and much more ambitious, than
 [marnix/metamath.vim mode](https://github.com/marnix/metamath.vim).
 It handles much more, e,g., it specially highlights different kinds of comments.
 
-## Installation
+## Downloading and Installing
+
+
+To download, make sure you have git installed. Then run at terminal window:
+
+~~~~sh
+git clone https://github.com/david-a-wheeler/vim-metamath.git
+cd vim-metamath
+~~~~
 
 If you're running Unix/Linux (including MacOS) and have "make",
-just run "make install" to install it.
-
+just run "make install" to install it
+(this is a standard convention for installing files).
 Running "make install" doesn't do any serious magic;
 it just copies the files in the vim/ directory
 into your local vim files directory.
@@ -26,7 +38,17 @@ and any necessary subdirectories if they don't already exist.
 If you can't run make, feel free to directly create the necessary directories
 and copy the files directly.
 
-Advanced users can add parameters to make.
+For example, on Windows, you can copy those files directly by running:
+
+~~~~cmd
+mkdir "%userprofile%\vimfiles"
+mkdir "%userprofile%\vimfiles\ftdetect" "%userprofile%\vimfiles\syntax"
+copy  "vim\ftdetect\\*.*" "%userprofile%\vimfiles\ftdetect"
+copy  "vim\syntax\\*.*" "%userprofile%\vimfiles\syntax"
+~~~~
+
+
+Advanced users can use make and add parameters to it.
 Just set VIMDIR to the vim files directory to install to, and/or
 CP\_OPTIONS to set additional options to "cp" when copying.
 The Makefile respects the DESTDIR convention, and it also
