@@ -42,11 +42,11 @@ can make your display look very different if you want it to.
 By default this mode uses a range of different colors to
 maximize feedback (which can help you avoid defects).
 
-Here's an example of text-based vim (withi :set background=dark):
+Here's an example of text-based vim (with :set background=dark):
 
 ![Vim metamath screenshot](https://github.com/david-a-wheeler/vim-metamath/blob/master/vim-metamath-screenshot.png)
 
-Here's an example of GUI-based gvim (withi :setcolor elflord):
+Here's an example of GUI-based gvim (with :setcolor elflord):
 
 ![GVim metamath screenshot](https://github.com/david-a-wheeler/vim-metamath/blob/master/gvim-metamath-elflord.png)
 
