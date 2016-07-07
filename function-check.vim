@@ -10,7 +10,7 @@ edit test.mm
 echom "Starting test"
 
 function SpecificSyntaxName()
-  return synIDattr(synID(line("."),col("."),1),"name")
+  return synIDattr(synID(line("."),col("."),0),"name")
 endfunction
 
 function MappedSyntaxName()
