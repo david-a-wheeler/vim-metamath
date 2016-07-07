@@ -15,7 +15,7 @@ It handles much more, e,g., it specially highlights different kinds of comments.
 If you're running Unix/Linux (including MacOS) and have "make",
 just run "make install" to install it.
 
-RUnning "make install" doesn't do any serious magic;
+Running "make install" doesn't do any serious magic;
 it just copies the files in the vim/ directory
 into your local vim files directory.
 On Unix/Linux systems (including MacOS) the local vim files directory
