@@ -1,0 +1,23 @@
+#!/bin/sh
+
+do_syntax_check='source syntax-check.vim'
+# source vim/syntax/metamath.vim
+# source vim/ftdetect/metamath.vim
+# messages
+# quit'
+
+if vim -e -c 'source syntax-check.vim' 2>&1 | grep -q 'Error'
+then
+  echo 'Syntax error.'
+  exit 1
+else
+  echo 'Syntax passed.'
+fi
+
+if yes ':q' | vim -c 'source function-check.vim' 2>&1 | grep -q '[Ff]ailure'
+then
+  echo 'Function error.'
+  exit 1
+fi
+# All okay
+echo "Tests passed."

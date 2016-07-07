@@ -25,3 +25,8 @@ install_symlinks:
 	      "$(DESTDIR)$(VIMDIR)"/ftdetect/metamath.vim 
 	ln -s "$(PWD)"/vim/syntax/metamath.vim \
 	      "$(DESTDIR)$(VIMDIR)"/syntax/metamath.vim 
+
+check:
+	./runtest
+
+test: check
