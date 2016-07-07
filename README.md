@@ -3,6 +3,7 @@
 This is vim-metamath, a vim mode for editing [metamath](http://metamath.org/)
 files by David A. Wheeler.  It provides immediate feedback, which
 should help you detect and fix defects before you even save your file.
+It is Free / libre / open source software, released under the MIT license.
 
 This mode has the same goals, but is otherwise unrelated
 and much more ambitious, than
