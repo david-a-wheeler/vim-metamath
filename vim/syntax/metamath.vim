@@ -1,7 +1,10 @@
 " Vim syntax file
 " Language: Metamath
 " Maintainer: David A. Wheeler <dwheeler@dwheeler.com>
-" Latest Revision: 5 July 2016
+" Latest Revision: 7 July 2016
+" Metamath is a tiny language that can express theorems in abstract
+" mathematics, accompanied by proofs that can be verified by a computer
+" program with absolute rigor. For more info see: http://metamath.org/
 
 if exists("b:current_syntax")
   finish
