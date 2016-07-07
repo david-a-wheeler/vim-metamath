@@ -1,4 +1,7 @@
 " Check if basic functionality works
+
+" Force-load these files *before* loading a file, so that we test
+" the version in development (not the one installed).
 source vim/syntax/metamath.vim
 source vim/ftdetect/metamath.vim
 
