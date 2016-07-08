@@ -16,7 +16,8 @@ else
   echo 'Syntax passed.'
 fi
 
-if yes ':q' | vim -c 'source function-check.vim' 2>&1 | grep -q '[Ff]ailure'
+if yes ':q' | vim -c 'source function-check.vim' 2>&1 | tr '\033' 'E' | \
+     tee | grep -q '[Ff]ailure'
 then
   echo 'Function error.'
   exit 1
