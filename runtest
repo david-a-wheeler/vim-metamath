@@ -2,17 +2,21 @@
 # This is the driver for the automated test suite.
 # It checks syntax of the mode files, then runs a function test.
 
-if vim -e -c 'source syntax-check.vim' 2>&1 | grep -q 'Error'
-then
+if vim -e -c 'source syntax-check.vim' 2>&1 | grep -q 'Error' ; then
   echo 'Syntax error.'
   exit 1
 else
   echo 'Syntax passed.'
 fi
 
+if [ "$DEBIAN_FRONTEND" = noninteractive ]; then
+  echo "NOTE: Functional tests don't work in noninteractive mode"
+  echo "Skipping functional tests."
+  exit 0
+fi
+
 if yes ':q' | vim -c 'source function-check.vim' 2>&1 | tr '\033' 'E' | \
-     tee | grep -q '[Ff]ailure'
-then
+     tee | grep -q '[Ff]ailure' ; then
   echo 'Function error.'
   exit 1
 fi
