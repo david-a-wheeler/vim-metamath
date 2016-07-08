@@ -78,10 +78,14 @@ If you have suggestions specific to this vim mode for metamath, please file an
 [issue](https://github.com/david-a-wheeler/vim-metamath/issues).
 Even better, create a change and file a
 [pull request](https://github.com/david-a-wheeler/vim-metamath/pulls).
-If you add major new functionality, please update the automated tests
-(as run by "make check") to check that they work.
 If you want to report a security vulnerability in this package (really?),
 [contact me directly and privately](http://www.dwheeler.com/contactme.html).
 
-If you have general vim or metamath issues, please contact those
+Before submitting changes, please run the automated test suite
+by running "make check".
+If you add major new functionality, please add to the automated tests
+(as run by "make check") to check that the additions work as expected
+(see "function-check.vim").
+
+If you have general issues with vim or metamath, please contact those
 projects instead.
