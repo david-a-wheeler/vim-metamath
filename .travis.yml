@@ -1,0 +1,5 @@
+sudo: true
+install:
+  - sudo apt-install vim
+script:
+  - time make check
