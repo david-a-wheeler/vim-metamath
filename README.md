@@ -1,5 +1,7 @@
 # vim-metamath
 
+[![Build Status](https://travis-ci.org/david-a-wheeler/vim-metamath.svg?branch=master)](https://travis-ci.org/david-a-wheeler/vim-metamath)
+
 This is vim-metamath, a vim mode to help edit
 [metamath](http://metamath.org/) files.
 Metamath is a tiny language that can express theorems in abstract mathematics,
