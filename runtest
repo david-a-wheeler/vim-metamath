@@ -2,12 +2,6 @@
 # This is the driver for the automated test suite.
 # It checks syntax of the mode files, then runs a function test.
 
-do_syntax_check='source syntax-check.vim'
-# source vim/syntax/metamath.vim
-# source vim/ftdetect/metamath.vim
-# messages
-# quit'
-
 if vim -e -c 'source syntax-check.vim' 2>&1 | grep -q 'Error'
 then
   echo 'Syntax error.'
