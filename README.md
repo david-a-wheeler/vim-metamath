@@ -73,6 +73,14 @@ can make your display look very different if you want it to.
 By default this mode uses a range of different colors to
 maximize feedback (which can help you avoid defects).
 
+These screenshots show the set.mm file while it's being edited.
+This is typically processed and turned into HTML pages for viewing.
+For example, see the
+[Metamath page for df-an (definition of "and")](http://us.metamath.org/mpegif/df-an.html).
+[Theorem *4.64 of Whitehead and Russell](http://us.metamath.org/mpegif/pm4.64.html).
+Detailed proofs are often created by other tools and turned into compressed
+form shown here.
+
 Here's an example of text-based vim (with :set background=dark):
 
 ![Vim metamath screenshot](https://github.com/david-a-wheeler/vim-metamath/blob/master/vim-metamath-screenshot.png)
