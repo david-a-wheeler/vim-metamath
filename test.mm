@@ -1,4 +1,4 @@
-$( test
+$( test file for vim-metamath, with extractions from set.mm
    7-Jul-2016
    http://us.metamath.org/
 $)
