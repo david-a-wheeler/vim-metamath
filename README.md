@@ -20,8 +20,12 @@ inside a comment area, and it colorizes certain operators differently.
 This creates a lot of visual differentiation that makes it easier to
 distinguish different kinds of information.
 
-## Downloading
+## Version
 
+This is version 1.0.0.
+This project adheres to [Semantic Versioning](http://semver.org/).
+
+## Downloading
 
 To download, make sure you have git installed. Then run in a terminal window:
 
@@ -29,6 +33,9 @@ To download, make sure you have git installed. Then run in a terminal window:
 git clone https://github.com/david-a-wheeler/vim-metamath.git
 cd vim-metamath
 ~~~~
+
+This will get the current released version (in the "master" branch).
+To get the development version, then do "git checkout develop".
 
 ## Installing
 
