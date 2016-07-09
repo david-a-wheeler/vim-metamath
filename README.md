@@ -95,5 +95,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md)
 for more information about how to provide suggestions,
 report problems, submit improvements, or in any other way contribute.
 
+This project adheres to [Semantic Versioning](http://semver.org/).
+
 If you have general issues with vim or metamath, please contact those
 projects instead.

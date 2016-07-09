@@ -10,6 +10,18 @@ If you want to report a security vulnerability in this package (really?),
 [contact me directly and privately via email](http://www.dwheeler.com/contactme.html) and tell me that you have a vulnerability to report
 (I'll reply with more details).
 
+## Branches
+
+We use git.
+
+As of version 1.0.0,
+the "master" branch contains released versions
+(the tip is the currently-released version).
+The "develop" branch contains "in-development" versions, its
+tip is the latest developmetn version.
+See [Vincent Driessen's "A successful Git branching model"](http://nvie.com/posts/a-successful-git-branching-model/).
+
+
 ## Contribution requirements
 
 Please generally follow the
