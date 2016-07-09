@@ -6,41 +6,37 @@ This is vim-metamath, a vim mode to help edit
 [metamath](http://metamath.org/) files.
 Metamath is a tiny language that can express theorems in abstract mathematics,
 accompanied by proofs that can be rigorously verified by a computer program.
-This mode provides immediate feedback while you're editing using the
-widely-used vim text editors.
+Vim-metamath is a vim mode that provides immediate feedback
+while you're editing metamath files using the widely-used vim text editors.
 This mode should help you detect and fix defects before you even save your file.
 It is Free / libre / open source software, released under the MIT license.
 
-This mode has the same goals, but is otherwise unrelated
-and much more ambitious, than
-[marnix/metamath.vim mode](https://github.com/marnix/metamath.vim).
-It handles much more, e,g., it specially highlights different kinds of comments.
+Unlike
+[marnix/metamath.vim mode](https://github.com/marnix/metamath.vim),
+this vim mode is *much* more ambitious and strives to differentiate
+many different things.
+For example, it specially highlights different kinds of comments
+inside a comment area, and it colorizes certain operators differently.
+This creates a lot of visual differentiation that makes it easier to
+distinguish different kinds of information.
 
-## Downloading and Installing
+## Downloading
 
 
-To download, make sure you have git installed. Then run at terminal window:
+To download, make sure you have git installed. Then run in a terminal window:
 
 ~~~~sh
 git clone https://github.com/david-a-wheeler/vim-metamath.git
 cd vim-metamath
 ~~~~
 
-If you're running Unix/Linux (including MacOS) and have "make",
-just run "make install" to install it
-(this is a standard convention for installing files).
-Running "make install" doesn't do any serious magic;
-it just copies the files in the vim/ directory
-into your local vim files directory.
-On Unix/Linux systems (including MacOS) the local vim files directory
-is "${HOME}/.vim", while on Windows it is "%userprofile%\vimfiles".
-Running make will create your local vim files directory
-and any necessary subdirectories if they don't already exist.
+## Installing
 
-If you can't run make, feel free to directly create the necessary directories
-and copy the files directly.
+On Unix/Linux (including MacOS), run "make install"
+to install it (this is a standard convention for installing files).
+You're done!
 
-For example, on Windows, you can copy those files directly by running:
+On Windows, do the following:
 
 ~~~~cmd
 mkdir "%userprofile%\vimfiles"
@@ -49,12 +45,23 @@ copy  "vim\ftdetect\\*.*" "%userprofile%\vimfiles\ftdetect"
 copy  "vim\syntax\\*.*" "%userprofile%\vimfiles\syntax"
 ~~~~
 
+If you're an advanced user, read on.
 
-Advanced users can use make and add parameters to it.
-Just set VIMDIR to the vim files directory to install to, and/or
-CP\_OPTIONS to set additional options to "cp" when copying.
-The Makefile respects the DESTDIR convention, and it also
-supports "make uninstall".  Here's an example:
+Running "make install" doesn't do any serious magic;
+it just copies the files and directories from this mode's "vim/" directory
+to your local vim files directory "~/.vim"
+(creating directories as needed).
+If you can't run make, feel free to directly create the necessary directories
+and copy the files directly.
+
+Advanced users can run make with additional parameters that set
+VIMDIR (the vim files directory to install to), and/or
+CP\_OPTIONS (additional options for "cp" when copying).
+The Makefile respects the DESTDIR convention
+(a prefix to the installation directory that you can pass via
+an environment variable or make parameter).
+You can also run "make uninstall" to uninstall the files.
+Here's an example:
 
 > make VIMDIR="${HOME}/.vim-alt".
 
@@ -88,6 +95,8 @@ by running "make check".
 If you add major new functionality, please add to the automated tests
 (as run by "make check") to check that the additions work as expected
 (see "function-check.vim").
+We use Travis for continuous integration testing on every commit
+to the central repository.
 
 If you have general issues with vim or metamath, please contact those
 projects instead.
