@@ -1,4 +1,7 @@
 sudo: false
+git:
+  depth: 3
+# Don't need this, vim is in default build.
 # install:
 #   - sudo apt-get install vim
 script:
