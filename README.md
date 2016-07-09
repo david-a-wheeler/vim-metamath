@@ -23,7 +23,7 @@ distinguish different kinds of information.
 
 ## Version
 
-This is version 1.0.0.
+This is version 1.0.1.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Downloading

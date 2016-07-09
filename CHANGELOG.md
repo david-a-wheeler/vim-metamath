@@ -14,6 +14,9 @@ The point is to "make it easier for users and contributors
 to see precisely what notable changes have been made between
 each release (or version) of the project."
 
+## [1.0.1] - 2016-07-09
+
+- Display the [CII Best Practices badge](https://bestpractices.coreinfrastructure.org/projects/240).
 
 ## [1.0.0] - 2016-07-09
 
