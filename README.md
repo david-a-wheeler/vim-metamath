@@ -1,5 +1,6 @@
 # vim-metamath
 
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/240/badge)](https://bestpractices.coreinfrastructure.org/projects/240)
 [![Build Status](https://travis-ci.org/david-a-wheeler/vim-metamath.svg?branch=master)](https://travis-ci.org/david-a-wheeler/vim-metamath)
 
 This is vim-metamath, a vim mode to help edit
