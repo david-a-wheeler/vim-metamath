@@ -1,5 +1,6 @@
 # vim-metamath
 
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/240/badge)](https://bestpractices.coreinfrastructure.org/projects/240)
 [![Build Status](https://travis-ci.org/david-a-wheeler/vim-metamath.svg?branch=master)](https://travis-ci.org/david-a-wheeler/vim-metamath)
 
 This is vim-metamath, a vim mode to help edit
@@ -22,7 +23,7 @@ distinguish different kinds of information.
 
 ## Version
 
-This is version 1.0.0.
+This is version 1.0.1.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Downloading
