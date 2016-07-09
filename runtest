@@ -10,9 +10,9 @@ else
 fi
 
 echo 'Functional test results (Warnings about non-terminals are expected):'
-yes ':q' | vim -c 'source function-check.vim' 2>&1 > ,err
-tr '\033' 'E' < ,err
-if grep -q 'Test failure' < ,err ; then
+yes ':q' | vim -c 'source function-check.vim' 2>&1 > .err
+tr '\033' 'E' < .err
+if grep -q 'Test failure' < .err ; then
   echo
   echo 'Test failure!'
   exit 1
