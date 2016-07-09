@@ -6,21 +6,21 @@ let s:portable = expand('<sfile>:p:h')
 " add to 'runtimepath' the directory of the software under test.
 let &runtimepath = printf('%s/vim,%s,%s/after', s:portable, &runtimepath, s:portable)
 
-echo "New runtimepath = " . &runtimepath
+echo 'New runtimepath = ' . &runtimepath
 
 " Force-load this *before* loading a file.
 source vim/ftdetect/metamath.vim
 
 edit test.mm
 
-echo "Starting test"
+echo 'Starting test'
 
 function SpecificSyntaxName()
-  return synIDattr(synID(line("."),col("."),0),"name")
+  return synIDattr(synID(line('.'),col('.'),0),'name')
 endfunction
 
 function MappedSyntaxName()
-  return synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
+  return synIDattr(synIDtrans(synID(line('.'),col('.'),1)),'name')
 endfunction
 
 function MyMoveTo(line,column)

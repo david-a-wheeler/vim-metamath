@@ -14,14 +14,16 @@ If you want to report a security vulnerability in this package (really?),
 
 Please generally follow the
 [Google Vimscript Style Guide](https://google.github.io/styleguide/vimscriptguide.xml).
-One exception: It recommends that you prefix regexes with "\m\C",
+For example, prefer single-quotes over double-quotes for string constants.
+One exception: That style guide
+recommends that you prefix regexes with "\m\C",
 which doesn't really make sense in most of our situations.
 The "\m" option enables "magic" mode, however, this is unnecessary
 in most of our situations because as documented in vim help,
 "Syntax patterns are always interpreted like the 'magic' option is set,
 no matter what the actual value of 'magic' is.
 The "\C" option enables case-matching, but the syntax file
-begins with "syntax case match" which forces this matching.
+begins with "syntax case match" which forces this matching anyway.
 
 Before submitting changes, please run the automated test suite
 by running "make check".
