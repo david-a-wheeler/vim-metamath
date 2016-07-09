@@ -89,22 +89,11 @@ Here's an example of GUI-based gvim (with :setcolor elflord):
 
 ![GVim metamath screenshot](https://github.com/david-a-wheeler/vim-metamath/blob/master/gvim-metamath-elflord.png)
 
-## Issues and proposals
+## Suggestions and Contributing
 
-If you have suggestions specific to this vim mode for metamath, please file an
-[issue](https://github.com/david-a-wheeler/vim-metamath/issues).
-Even better, create a change and file a
-[pull request](https://github.com/david-a-wheeler/vim-metamath/pulls).
-If you want to report a security vulnerability in this package (really?),
-[contact me directly and privately](http://www.dwheeler.com/contactme.html).
-
-Before submitting changes, please run the automated test suite
-by running "make check".
-If you add major new functionality, please add to the automated tests
-(as run by "make check") to check that the additions work as expected
-(see "function-check.vim").
-We use Travis for continuous integration testing on every commit
-to the central repository.
+See [CONTRIBUTING.md](./CONTRIBUTING.md)
+for more information about how to provide suggestions,
+report problems, submit improvements, or in any other way contribute.
 
 If you have general issues with vim or metamath, please contact those
 projects instead.
