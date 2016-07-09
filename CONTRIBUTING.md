@@ -33,7 +33,7 @@ git merge --no-ff develop
 git tag -a # VERSION NUMBER HERE, e.g., 1.0.0
 git push
 git checkout develop
-git merge --no-ff develop
+git merge --no-ff master
 git push
 ~~~~
 
