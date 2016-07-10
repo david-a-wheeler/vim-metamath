@@ -13,7 +13,7 @@ endif
 syn case match
 
 " Synchronize display on the last-seen comment closer, for speed.
-syn sync match metamathSyncComment grouphere NONE ' $)'
+syn sync match metamathSyncComment grouphere NONE '\<$)\>'
 
 " Whitespace and newlines delimit nearly everything.
 " Identifiers can contain '.' and '$'; parentheses are valid constants.
@@ -29,10 +29,10 @@ syn region metamathXref contained
     \ start='\<\~ \+'
     \ end='\>'
 
-" An expression in a comment; enclosed by `...`.
+" An expression in a comment; enclosed by `...` (backquotes).
 syn region metamathEmbeddedExpression contained
     \ start='\<`\>'
-    \ end='`\( \|$\)'he=e-1
+    \ end='\<`\>'
     \ contains=@metamathExpression
     \ skip='``'
 
@@ -94,66 +94,66 @@ syn cluster metamathSpecialComment
 
 " metamathComments do NOT nest, so we use keepend.
 syn region metamathComment
-    \ start='$('hs=s+1
-    \ end='$)'he=e-1
+    \ start='\<$(\>'
+    \ end='\<$)\>'
     \ contains=metamathTrailingSpace,@metamathSpecialComment,@Spell
     \ conceal keepend
 
 " $c ... $. - Constant declaration
 syn region metamathConstant
-    \ start='$c 'hs=s+3
-    \ end=' $\.'he=e-3
+    \ start='\<$c\>'
+    \ end='\<$\.\>'
 
 " $v ... $. - Variable declaration
 syn region metamathVariable
-    \ start='$v 'hs=s+3
-    \ end=' $\.'he=e-3
+    \ start='\<$v\>'
+    \ end='\<$\.\>'
 
 " $d ... $. - Disjoint (distinct) variable restriction
 syn region metamathDisjoint
-    \ start='$d 'hs=s+3
-    \ end=' $\.'he=e-3
+    \ start='\<$d\>'
+    \ end='\<$\.\>'
 
 " The following constructs require labels, so require that the label
 " be processed first.
 
 " <label> $f ... $. - "Floating" hypothesis (i.e. variable type declaration)
 syn region metamathFloating contained
-    \ start='$f 'hs=s+3
-    \ end=' $\.'he=e-3
+    \ start='\<$f\>'
+    \ end='\<$\.\>'
 
 " <label> $e ... $. - "Essential" hypothesis (i.e. a logical assumption for a
 "                     theorem or axiom)
 syn region metamathEssential contained
-       \ start='$e 'hs=s+3
-       \ end=' $\.'he=e-3
+       \ start='\<$e\>'
+       \ end='\<$\.\>'
        \ contains=@metamathExpression
 
 " <label> $a ... $. - Axiom or definition or syntax construction
 syn region metamathAxiom contained
-       \ start='$a 'hs=s+3
-       \ end=' $\.'he=e-3
+       \ start='\<$a\>'
+       \ end='\<$\.\>'
        \ contains=@metamathExpression
 
 " <label> $p ... $= ... $. - Theorem and its proof.
 " This handles the first part before "$="; on "$=" we start "metamathProof",
 " which looks different. The "keepend" is needed to end with metamathProof.
 syn region metamathTheorem contained
-       \ start='$p 'hs=s+3
-       \ end='$\.'he=e-2
+       \ start='\<$p\>'
+       \ end='\<$\.\>'
        \ contains=metamathProof,@metamathExpression
        \ keepend
 
 " This is the proof part of a theorem.
 syn region metamathProof contained
-       \ start=' $='hs=s+3
-       \ end='$\.'
+       \ start='\<$=\>'
+       \ end='\<$\.\>'
        \ contains=metamathTrailingSpace
 
 " $[ ... $] - Include a file
 syn region metamathInclude
-       \ start='$\[ 'hs=s+3
-       \ end=' $\]'he=e-3
+       \ start='\<$\[\>'
+       \ end='\<$\]\>'
 
 " ${ ... $} - Block
 syn region metamathBlock

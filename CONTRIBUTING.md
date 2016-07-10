@@ -25,7 +25,8 @@ So if you're making modifications, use "git checkout develop".
 
 This is a simplified version of
 [Vincent Driessen's "A successful Git branching model"](http://nvie.com/posts/a-successful-git-branching-model/).
-Once the "develop" branch is ready for a new release, we run:
+Once the "develop" branch is ready for a new release, we run these
+commands (see "make release"):
 
 ~~~~sh
 git checkout master

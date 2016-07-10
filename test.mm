@@ -13,6 +13,12 @@ $)
     $( [3-Jan-2005] $)
 
 $(
+ A comment
+$)
+
+  $c qq $.
+
+$(
 In vim, you can display the specific syntax type at your
 current cursor location by entering:
 :echom "> " . synIDattr(synID(line("."),col("."),0),"name")

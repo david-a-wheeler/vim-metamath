@@ -23,12 +23,16 @@ distinguish different kinds of information.
 
 ## Version
 
-This is version 1.0.1.
+This is version 1.0.2.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Downloading
 
-To download, make sure you have git installed. Then run in a terminal window:
+You can download final releases in zip or tar.gz formats from the
+[releases](https://github.com/david-a-wheeler/vim-metamath/releases) area.
+Expand it, and in a terminal window "cd" into its directory.
+
+You can also download using git by running this in a terminal window:
 
 ~~~~sh
 git clone https://github.com/david-a-wheeler/vim-metamath.git

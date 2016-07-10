@@ -30,3 +30,16 @@ check:
 	./runtest
 
 test: check
+
+# Make final release
+release:
+	git checkout master
+	git merge --no-ff develop
+	echo 'Please enter the new version number (e.g., 1.2.3)'
+	git tag -a `read vers ; echo "$${vers}"`
+	echo 'Version tag set to:'
+	git tag --points-at HEAD
+	git push
+	git checkout develop
+	git merge --no-ff master
+	git push
