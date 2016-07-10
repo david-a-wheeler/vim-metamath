@@ -27,6 +27,10 @@ function MyMoveTo(line,column)
   let junk = cursor(a:line, a:column)
 endfunction
 
+function MyMoveToPattern(text)
+  let junk = search(a:text)
+endfunction
+
 function! RunATest(actual, expected, testid) abort
   if a:actual != a:expected
     echo 'Test failure: ' . a:testid
@@ -46,6 +50,7 @@ call RunATest(MappedSyntaxName(), 'Comment', 'Comment2')
 
 " Did we detect a statement?
 call MyMoveTo(11,4)
-call RunATest(MappedSyntaxName(), 'Statement', 'Statement1')
+call RunATest(SpecificSyntaxName(), 'metamathLabel', 'Statement1')
+call RunATest(MappedSyntaxName(), 'Statement', 'Statement2')
 
 quit
