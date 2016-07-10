@@ -48,9 +48,17 @@ call MyMoveTo(1,4)
 call RunATest(SpecificSyntaxName(), 'metamathComment', 'Comment1')
 call RunATest(MappedSyntaxName(), 'Comment', 'Comment2')
 
-" Did we detect a statement?
-call MyMoveTo(11,4)
+" In: wo $a wff ( ph \/ ps ) $.
+" Move to "wo"
+normal 1G
+call MyMoveToPattern('\m\C\<wo\>')
 call RunATest(SpecificSyntaxName(), 'metamathLabel', 'Statement1')
 call RunATest(MappedSyntaxName(), 'Statement', 'Statement2')
+
+call MyMoveToPattern('\m\C\<$a\>')
+call RunATest(SpecificSyntaxName(), 'metamathAxiom', 'Axiom1')
+
+call MyMoveToPattern('\m\C\<\\\/\>')
+call RunATest(SpecificSyntaxName(), 'metamathBasicOperator', 'BasicOperator1')
 
 quit
