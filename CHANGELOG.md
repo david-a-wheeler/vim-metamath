@@ -14,6 +14,16 @@ The point is to "make it easier for users and contributors
 to see precisely what notable changes have been made between
 each release (or version) of the project."
 
+## [1.0.2] - 2016-07-09
+
+- Modify display so that highlighting begins exactly where the
+  construct is recognized.  Previous versions delayed highlighting,
+  which looked nice, but it could be confusing when interacting with it.
+  Now, when you start an axiom ($a), it immediately recognizes it
+  and higlights it that way.
+- Automate release process in the Makefile, to reduce risk of doing it
+  incorrectly.
+
 ## [1.0.1] - 2016-07-09
 
 - Display the [CII Best Practices badge](https://bestpractices.coreinfrastructure.org/projects/240).
