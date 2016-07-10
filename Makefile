@@ -30,3 +30,14 @@ check:
 	./runtest
 
 test: check
+
+# Make final release
+release:
+	git checkout master
+	git merge --no-ff develop
+	echo "Please enter new version number"
+	git tag -a "(read vers ; echo ${vers})"
+	git push
+	git checkout develop
+	git merge --no-ff master
+	git push
