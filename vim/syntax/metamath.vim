@@ -70,7 +70,7 @@ syn match metamathDiscouraged contained
 "  e.g. <A NAME="Monk"></A>. The <nnn> may be any alphanumeric string such as
 "  an integer or Roman numeral.
 syn match metamathBibReference contained
-  \ '\(Axiom\|Chapter\|Compare\|Condition\|\|Corollary\|Definition\|Equation\|Example\|Exercise\|Figure\|Item\|Lemmas\?\|Lines\?\|Notation\|Part\|Postulate\|Problem\|Property\|Proposition\|Remark\|Rule\|Scheme\|Section\|Theorem\)[ \t\n\r]\+\([^\t\n\r]\{1,10\}[ \t\n\r]\+\)\?\(\(from\|in\|of\|on\)[ \t\n\r]\+\)\?\[[^ \t\n\r\[\]]*\][ \t\n\r]\+p\.[ \t\n\r]\+[^ \t\n\r]\+'
+  \ '\c\(Axiom\|Chapter\|Compare\|Condition\|\|Corollary\|Definition\|Equation\|Example\|Exercise\|Figure\|Item\|Lemmas\?\|Lines\?\|Notation\|Part\|Postulate\|Problem\|Property\|Proposition\|Remark\|Rule\|Scheme\|Section\|Theorem\)[ \t\n\r]\+\([^\t\n\r]\{1,10\}[ \t\n\r]\+\)\?\(\(from\|in\|of\|on\)[ \t\n\r]\+\)\?\[[^ \t\n\r\[\]]*\][ \t\n\r]\+p\.[ \t\n\r]\+[^ \t\n\r]\+'
 
 syn match metamathURL contained
     \ '\<https\?://[^ \t]\+\>'
